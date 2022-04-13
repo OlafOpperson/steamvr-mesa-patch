@@ -17,9 +17,11 @@ url="https://www.mesa3d.org/"
 license=('custom')
 options=('debug')
 source=(https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig}
+        0001-disable-modifiers.patch
         LICENSE)
 sha512sums=('cc8012b8f3fcbecfbb153d0e009e6522c3776023501da8499c06f1eaa9ab0a555ca597e16e4d7a2b954b05c8c0737ae6567e0d8549fb63aa86ae587eb31cd01e'
             'SKIP'
+            'bd631d2b6ff64fb9d93643dd4caf93276d36d1bc8eee9df4f9b7d5eba98c105149eaf2e466540db4abffd73e1b2948bdd3db510ecfc231649c47a65996456339'
             'f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7')
 validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D'  # Emil Velikov <emil.l.velikov@gmail.com>
               '946D09B5E4C9845E63075FF1D961C596A7203456'  # Andres Gomez <tanty@igalia.com>
@@ -31,6 +33,7 @@ validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D'  # Emil Velikov <emil.l
 prepare() {
   cd mesa-$pkgver
 
+  patch -Np1 -i ../0001-disable-modifiers.patch
 }
 
 build() {
